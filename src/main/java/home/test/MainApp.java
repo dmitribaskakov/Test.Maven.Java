@@ -11,20 +11,15 @@ public class MainApp {
         System.out.println("Hello world !");
 
         StringWraper a = new StringWraper("aaa");
-        System.out.print("source a : ");
-        System.out.println(a.string);
+        System.out.println("source a : " + a.string);
         StringWraper b = new StringWraper("bbb");
-        System.out.print("source b : ");
-        System.out.println(b.string);
+        System.out.println("source b : " + b.string);
 
         Swap(a, b);
         System.out.println("swap a <-> b");
-        System.out.print("result a : ");
-        System.out.println(a.string);
-        System.out.print("result b : ");
-        System.out.println(b.string);
+        System.out.println("result a : " + a.string);
+        System.out.println("result b : " + b.string);
     }
-
 
     public static class StringWraper {
         public String string;
