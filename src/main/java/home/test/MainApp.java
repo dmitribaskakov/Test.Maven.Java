@@ -16,7 +16,7 @@ public class MainApp {
         System.out.println("source b : " + b.string);
         StringWraper c = new StringWraper("bbb");
 
-        Swap(a, b);
+        swap(a, b);
         System.out.println("swap a <-> b");
         System.out.println("result a : " + a.string);
         System.out.println("result b : " + b.string);
@@ -26,14 +26,19 @@ public class MainApp {
         } else {
             System.out.println("a not equals c");
         }
+        System.out.println("a.toString() : " + a.toString());
+        System.out.println("a.hashCode() : " + a.hashCode());
+        System.out.println("a.getClass() : " + a.getClass());
     }
 
     public static class StringWraper {
         public String string;
+
         StringWraper (String in) {
             string = in;
         }
 
+        @Override
         public boolean equals(Object other) {
             if (other == this) return true;
             if (other == null) return false;
@@ -42,9 +47,15 @@ public class MainApp {
             return this.string != null
                     && this.string.equals(testOther.string);
         }
+
+        @Override
+        public String toString() {
+            return string;
+        }
+
     }
 
-    public static void Swap (StringWraper a, StringWraper b) {
+    public static void swap (StringWraper a, StringWraper b) {
         String c;
         c = a.string;
         a.string = b.string;
