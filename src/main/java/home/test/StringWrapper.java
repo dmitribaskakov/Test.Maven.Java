@@ -30,6 +30,7 @@ public class StringWrapper {
     }
 
     public static void test() {
+        System.out.println("StringWrapper.test:");
         StringWrapper a = new StringWrapper("aaa");
         System.out.println("source a : " + a.string);
         StringWrapper b = new StringWrapper("bbb");
