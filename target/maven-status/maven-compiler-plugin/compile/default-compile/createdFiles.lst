@@ -5,9 +5,12 @@ home\test\Admin.class
 home\test\User.class
 home\test\Singleton\SingletonImpl.class
 home\test\StringWrapper.class
+home\test\OverridingTest$Child.class
 home\test\pecs\C.class
 home\test\pecs\D.class
 home\test\pecs\Stack.class
 home\test\Account.class
 home\test\pecs\Pecs.class
+home\test\OverridingTest.class
 home\test\pecs\A.class
+home\test\OverridingTest$Parent.class

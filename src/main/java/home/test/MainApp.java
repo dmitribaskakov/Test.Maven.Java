@@ -14,6 +14,8 @@ public class MainApp {
         // StringWrapper.test();
         // Polymorph.test();
         // Pecs.test();
+        new OverridingTest.Child();
+
     }
 
 }
