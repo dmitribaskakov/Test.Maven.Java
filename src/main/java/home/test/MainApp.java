@@ -1,5 +1,6 @@
 package home.test;
 
+import home.test.functionality.Functionaled;
 import home.test.pecs.Pecs;
 import org.apache.camel.main.Main;
 
@@ -14,8 +15,8 @@ public class MainApp {
         // StringWrapper.test();
         // Polymorph.test();
         // Pecs.test();
-        new OverridingTest.Child();
-
+        // new OverridingTest.Child();
+        Functionaled.test();
     }
 
 }
