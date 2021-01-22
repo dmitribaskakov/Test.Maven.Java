@@ -1,3 +1,4 @@
+home\test\functionality\Functionaled.class
 home\test\pecs\B.class
 home\test\Polymorph.class
 home\test\Printable.class
@@ -10,6 +11,7 @@ home\test\pecs\C.class
 home\test\pecs\D.class
 home\test\pecs\Stack.class
 home\test\Account.class
+home\test\functionality\Converter.class
 home\test\pecs\Pecs.class
 home\test\OverridingTest.class
 home\test\pecs\A.class

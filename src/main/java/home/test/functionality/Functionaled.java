@@ -2,6 +2,13 @@ package home.test.functionality;
 
 import java.util.*;
 
+
+@FunctionalInterface
+interface Converter<F, T> {
+    T convert(F from);
+}
+
+
 public class Functionaled {
 
     public static void test () {
@@ -42,6 +49,11 @@ public class Functionaled {
         }
         System.out.println("");
 
+        System.out.println("Functionalinterface: ");
+
+        Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
+        Integer converted = converter.convert("123");
+        System.out.println("converted="+converted);
 
 
 
