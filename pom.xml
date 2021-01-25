@@ -92,7 +92,6 @@
         <configuration>
           <source>15</source>
           <target>15</target>
-          <compilerArgs>--enable-preview</compilerArgs>
         </configuration>
       </plugin>
       <plugin>
@@ -118,10 +117,6 @@
         <configuration>
           <includePluginDependencies>true</includePluginDependencies>
           <mainClass>home.test.MainApp</mainClass>
-          <commandlineArgs>--enable-preview</commandlineArgs>
-          <arguments>
-            <argument>--enable-preview</argument>
-          </arguments>
         </configuration>
       </plugin>
 

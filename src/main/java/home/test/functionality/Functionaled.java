@@ -53,9 +53,8 @@ public class Functionaled {
 
         Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
         Integer converted = converter.convert("123");
+        converted = converter.convert("333");
         System.out.println("converted="+converted);
-
-
 
     }
 }
