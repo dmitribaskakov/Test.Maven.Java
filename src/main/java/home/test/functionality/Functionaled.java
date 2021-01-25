@@ -8,6 +8,11 @@ interface Converter<F, T> {
     T convert(F from);
 }
 
+class Something {
+    String startsWith(String s) {
+        return String.valueOf(s.charAt(0));
+    }
+}
 
 public class Functionaled {
 
@@ -51,10 +56,17 @@ public class Functionaled {
 
         System.out.println("Functionalinterface: ");
 
-        Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
-        Integer converted = converter.convert("123");
-        converted = converter.convert("333");
+//        Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
+//        Converter<String, Integer> converter = Integer::valueOf;
+//        Integer converted = converter.convert("123");
+
+        Something something = new Something();
+        Converter<String,String> converter = something::startsWith;
+        String converted = converter.convert("Java");
+
         System.out.println("converted="+converted);
+
+
 
     }
 }
