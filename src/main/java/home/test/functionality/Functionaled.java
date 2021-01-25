@@ -1,6 +1,8 @@
 package home.test.functionality;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 
 @FunctionalInterface
@@ -66,6 +68,12 @@ public class Functionaled {
 
         System.out.println("converted="+converted);
 
+//        Predicate<String> predicate = s -> s.length() > 0;
+//        System.out.println("predicate="+ predicated);
+
+        Stream.iterate(2, x -> x * 2)
+                .limit(10)
+                .forEach(System.out::println);
 
 
     }
