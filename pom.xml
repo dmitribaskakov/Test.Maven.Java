@@ -40,6 +40,11 @@
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-main</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.oracle.database.jdbc</groupId>
+      <artifactId>ojdbc11</artifactId>
+      <version>21.1.0.0</version>
+    </dependency>
 
     <!-- logging -->
     <dependency>
