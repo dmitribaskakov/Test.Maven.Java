@@ -27,6 +27,8 @@ For more help see the Apache Camel documentation
         <groupId>com.oracle.database.jdbc</groupId>
         <artifactId>ojdbc11</artifactId>
         <version>21.1.0.0</version>
+        <!-- <scope>system</scope>  -->
+        <!-- <systemPath>${project.basedir}/lib/ojdbc11.jar</systemPath>  -->
     </dependency>
 
 
