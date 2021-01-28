@@ -31,6 +31,15 @@ For more help see the Apache Camel documentation
         <!-- <systemPath>${project.basedir}/lib/ojdbc11.jar</systemPath>  -->
     </dependency>
 
+4. install PostgreSQL JDBC Driver
+
+   mvn install -DgroupId=org.postgresql -DartifactId=postgresql -Dversion=42.2.18.jre7
+
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.18.jre7</version>
+    </dependency>
 
 # Power Shell with Docker
 
@@ -46,12 +55,12 @@ For more help see the Apache Camel documentation
 -------
 
 ## 1: Create a Postgres docker container
-    docker run --name db -d --rm -v c:/Projects/Test.Maven.Java/db/data:/var/lib/postgresql/data -e TZ=Asia/Novosibirsk -e POSTGRES_PASSWORD=password postgres
+    docker run --name db.test.maven.java -d --rm -p 5432:5432 -v c:/Projects/Test.Maven.Java/db/data:/var/lib/postgresql/data -e TZ=Asia/Novosibirsk -e POSTGRES_PASSWORD=password postgres
     docker ps -a
-    docker stop db
+    docker stop db.test.maven.java
 
 ## 2: Connect and run some queries
-    docker exec -it db psql -U postgres
+    docker exec -it db.test.maven.java psql -U postgres
     CREATE DATABASE demo_db1;
     \c demo_db1;
     CREATE TABLE demo_t(something int);
@@ -63,7 +72,7 @@ For more help see the Apache Camel documentation
 ## 3: Automate - run scripts using docker cli
 run sql scripts from your host machine/dev machine etc
 
-    docker run --name db -d --rm -v c:/Projects/Test.Maven.Java/db/data:/var/lib/postgresql/data -v c:/Projects/Test.Maven.Java/db/scripts:/etc/postgresql/scripts -e TZ=Asia/Novosibirsk -e POSTGRES_PASSWORD=password postgres
-    docker exec -it db psql -U postgres -c "CREATE DATABASE demo_db2"
-    docker exec -it db psql -U postgres -f /etc/postgresql/scripts/datascript_db1.sql
+    docker run --name db.test.maven.java -d --rm -p 5432:5432 -v c:/Projects/Test.Maven.Java/db/data:/var/lib/postgresql/data -v c:/Projects/Test.Maven.Java/db/scripts:/etc/postgresql/scripts -e TZ=Asia/Novosibirsk -e POSTGRES_PASSWORD=password postgres
+    docker exec -it db.test.maven.java psql -U postgres -c "CREATE DATABASE demo_db2"
+    docker exec -it db.test.maven.java psql -U postgres -f /etc/postgresql/scripts/datascript_db1.sql
 
