@@ -17,7 +17,6 @@ public class JdbcExample {
 
     public static void test () throws SQLException, ClassNotFoundException {
 
-        System.out.println("initialize org.postgresql.Driver");
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
@@ -25,9 +24,7 @@ public class JdbcExample {
             e.printStackTrace();
             return;
         }
-
-        System.out.println("PostgreSQL JDBC Driver successfully connected");
-        Connection connection = null;
+        Connection connection;
 
         try {
             connection = DriverManager
@@ -44,13 +41,14 @@ public class JdbcExample {
             System.out.println("Failed to make connection to database");
         }
 
-        if (true) {
-            System.out.println("It's ok");
-            return;
-        }
+//        if (true) {
+//            System.out.println("It's ok");
+//            return;
+//        }
 
         Statement stmt;
         String sql;
+        ResultSet rs;
 
         stmt = connection.createStatement();
         sql = "CREATE TABLE IF NOT EXISTS company" +
@@ -61,51 +59,32 @@ public class JdbcExample {
                 " SALARY         REAL)";
         stmt.executeUpdate(sql);
         stmt.close();
-//        c.close();
 
         connection.setAutoCommit(false);
-
         stmt = connection.createStatement();
-        sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 );";
-        stmt.executeUpdate(sql);
+        rs = stmt.executeQuery("SELECT * FROM COMPANY;");
+        if (!rs.next()) {
+            rs.close();
+            stmt.close();
 
-        sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (2, 'Allen', 25, 'Texas', 15000.00 );";
-        stmt.executeUpdate(sql);
+            stmt = connection.createStatement();
+            sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (1, 'Paul', 32, 'California', 20000.00 );";
+            stmt.executeUpdate(sql);
 
-        sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );";
-        stmt.executeUpdate(sql);
+            sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (2, 'Allen', 25, 'Texas', 15000.00 );";
+            stmt.executeUpdate(sql);
 
-        sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );";
-        stmt.executeUpdate(sql);
+            sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (3, 'Teddy', 23, 'Norway', 20000.00 );";
+            stmt.executeUpdate(sql);
 
-        stmt.close();
-        connection.commit();
-//        c.close();
+            sql = "INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 );";
+            stmt.executeUpdate(sql);
 
-        stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM COMPANY;");
-        while (rs.next()) {
-            int id = rs.getInt("id");
-            String name = rs.getString("name");
-            int age = rs.getInt("age");
-            String address = rs.getString("address");
-            float salary = rs.getFloat("salary");
-            System.out.println("ID = " + id);
-            System.out.println("NAME = " + name);
-            System.out.println("AGE = " + age);
-            System.out.println("ADDRESS = " + address);
-            System.out.println("SALARY = " + salary);
-            System.out.println();
+            stmt.close();
+            connection.commit();
         }
-        rs.close();
-        stmt.close();
-//        c.close();
 
         stmt = connection.createStatement();
-        sql = "UPDATE COMPANY SET SALARY = 25000.00 WHERE ID=1;";
-        stmt.executeUpdate(sql);
-        connection.commit();
-
         rs = stmt.executeQuery("SELECT * FROM COMPANY;");
         while (rs.next()) {
             int id = rs.getInt("id");
@@ -122,13 +101,38 @@ public class JdbcExample {
         }
         rs.close();
         stmt.close();
-//        c.close();
+
+        stmt = connection.createStatement();
+        sql = "UPDATE COMPANY SET SALARY = 25000.00 WHERE ID=1;";
+        stmt.executeUpdate(sql);
+        stmt.close();
+        connection.commit();
+
+        stmt = connection.createStatement();
+        rs = stmt.executeQuery("SELECT * FROM COMPANY;");
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            int age = rs.getInt("age");
+            String address = rs.getString("address");
+            float salary = rs.getFloat("salary");
+            System.out.println("ID = " + id);
+            System.out.println("NAME = " + name);
+            System.out.println("AGE = " + age);
+            System.out.println("ADDRESS = " + address);
+            System.out.println("SALARY = " + salary);
+            System.out.println();
+        }
+        rs.close();
+        stmt.close();
 
         stmt = connection.createStatement();
         sql = "DELETE FROM COMPANY WHERE ID=2;";
         stmt.executeUpdate(sql);
+        stmt.close();
         connection.commit();
 
+        stmt = connection.createStatement();
         rs = stmt.executeQuery("SELECT * FROM COMPANY;");
         while (rs.next()) {
             int id = rs.getInt("id");
@@ -147,12 +151,16 @@ public class JdbcExample {
         stmt.close();
         connection.close();
 
+        if (true) {
+            System.out.println("It's ok");
+            return;
+        }
+
 //        PreparedStatement prepStmnt = c.prepareStatement("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) "
 //                + "VALUES (2, 'Allen', 25, 'Texas', 15000.00 );");
 //        int parameterIndex = 234;
 //        prepStmnt.setString(parameterIndex, "asd");
 //        rs = prepStmnt.executeQuery();
-
 
 
         /**
