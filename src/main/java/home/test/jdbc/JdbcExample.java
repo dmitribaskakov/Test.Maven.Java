@@ -9,11 +9,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
+
 import home.test.core.User;
 import home.test.jdbc.QueryExecutor;
 import home.test.jdbc.ResultHandler;
 
 public class JdbcExample {
+
+    public void someMethod(){
+        // В примере ниже и a и b - effectively final, тк значения устанавливаютcя однажды:
+        final int a = 1;
+        final int b;
+        if (a == 2) b = 3;
+        else b = 4;
+        // с НЕ является effectively final, т.к. значение изменяется
+        int c = 10;
+        c++;
+
+        Stream.of(1, 2).forEach(s-> System.out.println(s + a)); //Ок
+        //Stream.of(1, 2).forEach(s-> System.out.println(s + c)); //Ошибка компиляции
+    }
 
     public static void test () throws SQLException, ClassNotFoundException {
 

@@ -6,11 +6,15 @@ import org.apache.camel.main.Main;
 import home.test.jdbc.JdbcExample;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.ListIterator;
+import java.util.stream.Stream;
 
 /**
  * A Camel Application
  */
 public class MainApp {
+
 
     public static void main(String... args) throws SQLException, ClassNotFoundException {
         System.out.println("Hello world !");
@@ -20,7 +24,30 @@ public class MainApp {
         // Pecs.test();
         // new OverridingTest.Child();
         // Functionaled.test();
-        JdbcExample.test();
+//        JdbcExample j = new JdbcExample();
+//        j.someMethod();
+//        JdbcExample.test();
+
+        ArrayList<String> states = new ArrayList<String>();
+        states.add("Germany");
+        states.add("France");
+        states.add("Italy");
+        states.add("Spain");
+
+        ListIterator<String> listIter = states.listIterator();
+
+        while(listIter.hasNext()){
+
+            System.out.println(listIter.next());
+        }
+        // сейчас текущий элемент - Испания
+        // изменим значение этого элемента
+        listIter.set("Португалия");
+        System.out.println("пройдемся по элементам в обратном порядке");
+        while(listIter.hasPrevious()){
+
+            System.out.println(listIter.previous());
+        }
     }
 
 }

@@ -2,12 +2,13 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
     <export-instructions>
       <create-header value="true" />
+      <friendly-headers value="false" />
       <quote-values-containing-separator value="true" />
       <quote-all-values value="false" />
       <value-separator value="" />
@@ -23,18 +24,7 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="6c18b078-a394-4864-abfc-01dd6a5d16dc">
-        <schema name="information_schema" object-types="sequence, function, view, table" />
-        <schema name="pg_catalog" object-types="sequence, function, view, table" />
-        <schema name="pg_toast" object-types="sequence, function, view, table" />
-        <schema name="public" object-types="sequence, function, view, table" />
-      </connection>
-      <connection connection-id="ac86f8f7-fef1-4ca2-ad41-6b56532ae54f">
-        <schema name="pg_catalog" object-types="sequence, function, view, table" />
-        <schema name="public" object-types="sequence, function, constraint, column, dataset trigger, view, index, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="6c18b078-a394-4864-abfc-01dd6a5d16dc">
@@ -45,9 +35,7 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="ac86f8f7-fef1-4ca2-ad41-6b56532ae54f" object-ref="schemas/public/tables/company" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="6c18b078-a394-4864-abfc-01dd6a5d16dc" />
@@ -84,7 +72,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="6c18b078-a394-4864-abfc-01dd6a5d16dc" active="true">
+      <connection id="6c18b078-a394-4864-abfc-01dd6a5d16dc" active="false">
         <database>
           <name value="Connection to main" />
           <description value="" />
@@ -168,7 +156,7 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="ac86f8f7-fef1-4ca2-ad41-6b56532ae54f" active="true">
+      <connection id="ac86f8f7-fef1-4ca2-ad41-6b56532ae54f" active="false">
         <database>
           <name value="Connection to demo_db1" />
           <description value="" />
@@ -311,8 +299,6 @@
           <object-type name="TABLE" enabled="true" />
           <object-type name="VIEW" enabled="true" />
           <object-type name="MATERIALIZED VIEW" enabled="true" />
-          <object-type name="NESTED TABLE" enabled="false" />
-          <object-type name="COLUMN" enabled="false" />
           <object-type name="INDEX" enabled="true" />
           <object-type name="CONSTRAINT" enabled="true" />
           <object-type name="DATASET TRIGGER" enabled="true" />
@@ -323,8 +309,6 @@
           <object-type name="FUNCTION" enabled="true" />
           <object-type name="PACKAGE" enabled="true" />
           <object-type name="TYPE" enabled="true" />
-          <object-type name="TYPE ATTRIBUTE" enabled="false" />
-          <object-type name="ARGUMENT" enabled="false" />
           <object-type name="DIMENSION" enabled="false" />
           <object-type name="CLUSTER" enabled="false" />
           <object-type name="DBLINK" enabled="true" />
