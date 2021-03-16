@@ -8,6 +8,8 @@ public class StoreSample {
         Producer producer = new Producer(store);
         Consumer consumer = new Consumer(store);
         new Thread(producer).start();
+        new Thread(producer).start();
+        new Thread(consumer).start();
         new Thread(consumer).start();
     }
 }
