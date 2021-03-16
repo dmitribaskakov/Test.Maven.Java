@@ -3,8 +3,8 @@ package home.test.store;
 // Класс Магазин, хранящий произведенные товары
 public class Store {
     @SuppressWarnings("FieldCanBeLocal")
-    final private int maxProduct=3;
-    private int product=0;
+    final private int maxProduct = 3;
+    private int product = 0;
     public synchronized void get() {
         while (product<1) {
             try {

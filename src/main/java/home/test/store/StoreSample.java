@@ -4,7 +4,7 @@ package home.test.store;
 public class StoreSample {
 
     public static void test () {
-        Store store=new Store();
+        Store store = new Store();
         Producer producer = new Producer(store);
         Consumer consumer = new Consumer(store);
         new Thread(producer).start();
