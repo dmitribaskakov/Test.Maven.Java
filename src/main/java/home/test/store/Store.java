@@ -30,11 +30,13 @@ public class Store {
 //    }
 
     ReentrantLock locker;
-    Condition condition;
+    Condition notFull;
+    Condition notEmpty;
 
     Store(){
         locker = new ReentrantLock(); // создаем блокировку
-        condition = locker.newCondition(); // получаем условие, связанное с блокировкой
+        notFull = locker.newCondition(); // получаем условие, связанное с блокировкой
+        notEmpty = locker.newCondition(); // получаем условие, связанное с блокировкой
     }
 
     public void get() {
@@ -42,13 +44,13 @@ public class Store {
         try {
             // пока нет доступных товаров на складе, ожидаем
             while (product<1)
-                condition.await();
+                notEmpty.await();
 
             product--;
             System.out.println("Покупатель " + Thread.currentThread().getName() + " купил 1 товар. Товаров на складе: " + product);
 
             // сигнализируем
-            condition.signalAll();
+            notFull.signal();
         } catch (InterruptedException e){
             System.out.println(e.getMessage());
         } finally{
@@ -61,12 +63,12 @@ public class Store {
         try {
             // пока на складе maxProduct товара, ждем освобождения места
             while (product>=maxProduct)
-                condition.await();
+                notFull.await();
 
             product++;
             System.out.println("Производитель " + Thread.currentThread().getName() + " добавил 1 товар. Товаров на складе: " + product);
             // сигнализируем
-            condition.signalAll();
+            notEmpty.signal();
         } catch (InterruptedException e){
             System.out.println(e.getMessage());
         } finally{
